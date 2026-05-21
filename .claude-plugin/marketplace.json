@@ -108,13 +108,13 @@
     },
     {
       "name": "nushell",
-      "description": "Nushell MCP server + LSP",
-      "version": "0.1.0",
+      "description": "Nushell 完整打包版（含 polars 等插件）— MCP server + LSP",
+      "version": "1.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
       },
-      "homepage": "https://github.com/raystyle/plugins",
+      "homepage": "https://github.com/raystyle/claude-plugins",
       "repository": "https://github.com/raystyle/nushell-evo",
       "license": "MIT",
       "source": "./plugins/nushell",
