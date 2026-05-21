@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "nu": {
+      "command": "${CLAUDE_PLUGIN_ROOT}/bin/nu.exe",
+      "args": ["--mcp"],
+      "env": {
+        "XDG_CONFIG_HOME": "${CLAUDE_PLUGIN_ROOT}/config",
+        "PATH": "${CLAUDE_PLUGIN_ROOT}/bin;${PATH}"
+      }
+    }
+  }
+}

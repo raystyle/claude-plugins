@@ -1,0 +1,11 @@
+{
+  "nushell": {
+    "command": "${CLAUDE_PLUGIN_ROOT}/bin/nu.exe",
+    "args": ["--lsp"],
+    "extensionToLanguage": {
+      ".nu": "nushell"
+    },
+    "startupTimeout": 120000,
+    "maxRestarts": 3
+  }
+}
