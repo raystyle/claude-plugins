@@ -1,0 +1,42 @@
+{
+  "name": "statusline",
+  "description": "StatusLine Hook：自动注入状态栏配置，显示模型、Context、Git、目录、MCP/LSP 服务状态",
+  "version": "1.0.0",
+  "author": {
+    "name": "RAY",
+    "url": "https://github.com/raystyle"
+  },
+  "homepage": "https://github.com/raystyle/plugins",
+  "repository": "https://github.com/raystyle/plugins",
+  "license": "MIT",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/setup.sh",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/services.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/services.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

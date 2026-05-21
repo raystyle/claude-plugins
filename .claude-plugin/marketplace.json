@@ -1,0 +1,124 @@
+{
+  "name": "raystyle",
+  "metadata": {
+    "description": "Claude Code 基础设施插件：MCP servers + LSP + Hooks"
+  },
+  "owner": {
+    "name": "RAY",
+    "url": "https://github.com/raystyle"
+  },
+  "plugins": [
+    {
+      "name": "dev-fix",
+      "description": "开发辅助 Hook：修复 Windows Git Bash 编码/换行 + Python venv 激活 + 写完文件自动 git add",
+      "version": "1.0.0",
+      "author": {
+        "name": "RAY",
+        "url": "https://github.com/raystyle"
+      },
+      "homepage": "https://github.com/raystyle/plugins",
+      "repository": "https://github.com/raystyle/plugins",
+      "license": "MIT",
+      "source": "./plugins/dev-fix",
+      "category": "hook"
+    },
+    {
+      "name": "typescript",
+      "description": "TS/JS LSP (typescript-language-server)",
+      "version": "1.0.0",
+      "author": {
+        "name": "RAY",
+        "url": "https://github.com/raystyle"
+      },
+      "homepage": "https://github.com/raystyle/plugins",
+      "repository": "https://github.com/raystyle/plugins",
+      "license": "MIT",
+      "source": "./plugins/typescript",
+      "category": "lsp"
+    },
+    {
+      "name": "rust",
+      "description": "Rust LSP (rust-analyzer)",
+      "version": "1.0.0",
+      "author": {
+        "name": "RAY",
+        "url": "https://github.com/raystyle"
+      },
+      "homepage": "https://github.com/raystyle/plugins",
+      "repository": "https://github.com/raystyle/plugins",
+      "license": "MIT",
+      "source": "./plugins/rust",
+      "category": "lsp"
+    },
+    {
+      "name": "python",
+      "description": "Python LSP (ty type checker)",
+      "version": "1.0.0",
+      "author": {
+        "name": "RAY",
+        "url": "https://github.com/raystyle"
+      },
+      "homepage": "https://github.com/raystyle/plugins",
+      "repository": "https://github.com/raystyle/plugins",
+      "license": "MIT",
+      "source": "./plugins/python",
+      "category": "lsp"
+    },
+    {
+      "name": "psh5",
+      "description": "Windows PowerShell 5.x LSP (PowerShellEditorServices)",
+      "version": "1.0.0",
+      "author": {
+        "name": "RAY",
+        "url": "https://github.com/raystyle"
+      },
+      "homepage": "https://github.com/raystyle/plugins",
+      "repository": "https://github.com/raystyle/plugins",
+      "license": "MIT",
+      "source": "./plugins/psh5",
+      "category": "lsp"
+    },
+    {
+      "name": "pwsh7",
+      "description": "PowerShell 7 LSP (PowerShellEditorServices)",
+      "version": "1.0.0",
+      "author": {
+        "name": "RAY",
+        "url": "https://github.com/raystyle"
+      },
+      "homepage": "https://github.com/raystyle/plugins",
+      "repository": "https://github.com/raystyle/plugins",
+      "license": "MIT",
+      "source": "./plugins/pwsh7",
+      "category": "lsp"
+    },
+    {
+      "name": "statusline",
+      "description": "StatusLine Hook：自动注入 Claude Code 状态栏，显示模型、Context 用量、费用、Git 状态、Rate limit",
+      "version": "1.0.0",
+      "author": {
+        "name": "RAY",
+        "url": "https://github.com/raystyle"
+      },
+      "homepage": "https://github.com/raystyle/plugins",
+      "repository": "https://github.com/raystyle/plugins",
+      "license": "MIT",
+      "source": "./plugins/statusline",
+      "category": "hook"
+    },
+    {
+      "name": "nushell",
+      "description": "Nushell MCP server + LSP",
+      "version": "0.1.0",
+      "author": {
+        "name": "RAY",
+        "url": "https://github.com/raystyle"
+      },
+      "homepage": "https://github.com/raystyle/plugins",
+      "repository": "https://github.com/raystyle/nushell-evo",
+      "license": "MIT",
+      "source": "./plugins/nushell",
+      "category": "mcp"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "rust",
+  "description": "Rust LSP (rust-analyzer)",
+  "version": "1.0.0",
+  "author": {
+    "name": "RAY",
+    "url": "https://github.com/raystyle"
+  },
+  "homepage": "https://github.com/raystyle/plugins",
+  "repository": "https://github.com/raystyle/plugins",
+  "license": "MIT",
+  "lspServers": {
+    "rust-analyzer": {
+      "command": "rust-analyzer",
+      "extensionToLanguage": {
+        ".rs": "rust"
+      },
+      "startupTimeout": 120000,
+      "maxRestarts": 3
+    }
+  }
+}

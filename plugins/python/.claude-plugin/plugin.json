@@ -1,0 +1,24 @@
+{
+  "name": "python",
+  "description": "Python LSP (ty type checker)",
+  "version": "1.0.0",
+  "author": {
+    "name": "RAY",
+    "url": "https://github.com/raystyle"
+  },
+  "homepage": "https://github.com/raystyle/plugins",
+  "repository": "https://github.com/raystyle/plugins",
+  "license": "MIT",
+  "lspServers": {
+    "ty": {
+      "command": "uvx",
+      "args": ["ty@latest", "server"],
+      "extensionToLanguage": {
+        ".py": "python",
+        ".pyi": "python"
+      },
+      "startupTimeout": 120000,
+      "maxRestarts": 3
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "pwsh7",
+  "description": "PowerShell 7 LSP (PowerShellEditorServices)",
+  "version": "1.0.0",
+  "author": {
+    "name": "RAY",
+    "url": "https://github.com/raystyle"
+  },
+  "homepage": "https://github.com/raystyle/plugins",
+  "repository": "https://github.com/raystyle/plugins",
+  "license": "MIT",
+  "lspServers": {
+    "pwsh": {
+      "command": "pwsh",
+      "args": [
+        "-NoLogo",
+        "-NoProfile",
+        "-File",
+        "${CLAUDE_PLUGIN_ROOT}/shared-scripts/Start-PsesStdio.ps1"
+      ],
+      "extensionToLanguage": {
+        ".ps1": "powershell",
+        ".psm1": "powershell",
+        ".psd1": "powershell"
+      },
+      "startupTimeout": 120000,
+      "maxRestarts": 3
+    }
+  }
+}

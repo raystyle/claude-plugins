@@ -1,0 +1,26 @@
+# Windows 兼容性规范
+
+本项目所有插件专为 Windows 开发环境设计。
+
+## dev-fix Hook（编码/换行修复）
+
+- `bash-fix.sh` 通过 `tr -d '\r'` 消除 Git Bash 的 CR 换行问题
+- 自动设置 UTF-8 编码环境（`PYTHONUTF8`、`PYTHONIOENCODING`、`LESSCHARSET`、`LANG`）
+- locale 使用 `C.UTF-8`（通用），不要硬编码特定语言
+- Python venv 检测优先查找 `Scripts/activate`（Windows），其次 `bin/activate`（Linux/Mac）
+
+## PowerShell LSP 冲突
+
+- **psh5**（Windows PowerShell 5.x）和 **pwsh7**（PowerShell 7）映射相同的扩展名（.ps1/.psm1/.psd1）
+- 同时启用时只有先加载的生效，无警告无报错
+- **必须只启用其中一个**，根据系统安装的 PowerShell 版本选择：
+  - 只有 Windows PowerShell 5.x → 启用 psh5
+  - 只有 PowerShell 7 → 启用 pwsh7
+  - 两者都有 → 推荐 pwsh7（性能更好，功能更全）
+- Start-PsesStdio.ps1 通过 `Get-Module -ListAvailable PowerShellEditorServices` 自动发现模块，psh5 和 pwsh7 使用相同的脚本
+
+## 路径处理
+
+- plugin.json 中使用 `${CLAUDE_PLUGIN_ROOT}` 引用插件目录，不要硬编码路径
+- Bash hook 脚本中使用 `$CLAUDE_PROJECT_DIR` 而非硬编码项目路径
+- 文件路径用正斜杠 `/`（Git Bash 兼容），避免反斜杠 `\`

@@ -1,0 +1,37 @@
+{
+  "name": "dev-fix",
+  "description": "开发辅助 Hook：修复 Windows Git Bash 编码/换行 + Python venv 激活 + 写完文件自动 git add",
+  "version": "1.0.0",
+  "author": {
+    "name": "RAY",
+    "url": "https://github.com/raystyle"
+  },
+  "homepage": "https://github.com/raystyle/plugins",
+  "repository": "https://github.com/raystyle/plugins",
+  "license": "MIT",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/bash-fix.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/git-add.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  }
+}

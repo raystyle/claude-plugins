@@ -1,0 +1,29 @@
+{
+  "name": "nushell",
+  "description": "Nushell MCP server + LSP",
+  "version": "0.1.0",
+  "author": {
+    "name": "RAY",
+    "url": "https://github.com/raystyle"
+  },
+  "homepage": "https://github.com/raystyle/plugins",
+  "repository": "https://github.com/raystyle/nushell-evo",
+  "license": "MIT",
+  "mcpServers": {
+    "nu": {
+      "command": "nu",
+      "args": ["--mcp"]
+    }
+  },
+  "lspServers": {
+    "nushell": {
+      "command": "nu",
+      "args": ["--lsp"],
+      "extensionToLanguage": {
+        ".nu": "nushell"
+      },
+      "startupTimeout": 120000,
+      "maxRestarts": 3
+    }
+  }
+}
