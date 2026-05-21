@@ -6,8 +6,17 @@
 # 否则 config.nu 中的 plugin use 找不到 registry 会中断整个 config.nu 加载
 
 let bin = ($nu.current-exe | path dirname)
+
+# PATH 可能是字符串（从 MCP env 传入）或列表（nushell 原生）
+# 需要先统一为列表，否则外部命令查找失败
+let path_list = if ($env.PATH | describe) =~ 'string' {
+  $env.PATH | split row (char esep)
+} else {
+  $env.PATH | default []
+}
+
 $env.NU_PLUGIN_DIRS = ($env.NU_PLUGIN_DIRS? | default [] | append $bin)
-$env.PATH = ($env.PATH | default [] | append $bin)
+$env.PATH = ($path_list | append $bin)
 
 # 注册 bin/ 下所有 nu_plugin_* 二进制（幂等，重复执行不产生重复条目）
 for p in (ls $bin | where name =~ 'nu_plugin_' | get name) {
