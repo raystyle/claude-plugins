@@ -1,3 +1,10 @@
+---
+paths:
+  - "**/*.nu"
+  - "**/config/nushell/**"
+  - "plugins/nushell/**"
+---
+
 # Nushell Plugin 配置经验
 
 ## MCP Server 配置
@@ -70,7 +77,7 @@ export def browser-open [
     let has_url = ($url | is-not-empty)
     let has_init_js = ($init_js | is-not-empty)
     if $has_url and $has_init_js {
-        browse open --session $session --url $url --init-js $init_js
+        browse open --session $session --url $url --init-js $init-js
     } else if $has_url {
         browse open --session $session --url $url
     } else {

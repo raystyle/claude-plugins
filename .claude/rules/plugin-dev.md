@@ -1,3 +1,13 @@
+---
+paths:
+  - "**/.claude-plugin/plugin.json"
+  - "**/.mcp.json"
+  - "**/.lsp.json"
+  - "**/.claude-plugin/marketplace.json"
+  - "plugins/*/hooks/**"
+  - "plugins/*/scripts/**"
+---
+
 # Plugin 开发规范
 
 ## Schema 和清单

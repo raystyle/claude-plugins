@@ -1,3 +1,8 @@
+---
+paths:
+  - ".knowledge/**"
+---
+
 # .knowledge 研究开发需求
 
 本项目 `.knowledge/` 目录包含 Claude Code 源码和 Nushell 文档，用于研究插件系统行为。
