@@ -1,15 +1,6 @@
-# RAY 的私有 Claude 插件
+# Claude Plugins
 
-> MCP servers、LSP configs、Hooks — 专为 Windows 开发环境适配，解决编码、Shell 差异和 LSP 配置问题。
-
-**Windows 适配亮点：**
-- **编码/换行自动修复** — 消除 Git Bash 的 `\r` 换行和 UTF-8 编码问题
-- **Python venv 自动激活** — 检测 `.venv`/`venv` 目录（支持 `Scripts\` Windows 路径）
-- **双 PowerShell LSP** — 分别适配 Windows PowerShell 5.x 和 PowerShell 7
-- **Nushell 完整打包版** — 自包含的 MCP server + LSP，捆绑 nu 二进制和 6 个插件（167 个命令）
-- **Statusline 状态栏** — 四行彩色显示模型、Context 用量、MCP/LSP 服务、Git 状态
-
-Skills 已拆分到独立仓库：**[raystyle/skills](https://github.com/raystyle/skills)**
+Claude Code 插件集合。MCP servers、LSP configs、Hooks — 专为 Windows 开发环境适配。
 
 ## 插件列表
 
@@ -23,6 +14,54 @@ Skills 已拆分到独立仓库：**[raystyle/skills](https://github.com/raystyl
 | [psh5](plugins/psh5) | LSP | PowerShellEditorServices（Windows PowerShell 5.x） |
 | [pwsh7](plugins/pwsh7) | LSP | PowerShellEditorServices（PowerShell 7） |
 | [nushell](plugins/nushell) | MCP+LSP | Nushell 完整打包版（含 polars 等插件）— MCP server + LSP |
+
+## 安装
+
+### 1. 基础环境
+
+通过 [oh-my-winclaude](https://github.com/raystyle/oh-my-winclaude)（omc）安装插件所需的工具链：
+
+```powershell
+git clone https://github.com/raystyle/oh-my-winclaude D:\Oh-My-Claude
+cd D:\Oh-My-Claude
+.\.scripts\init.ps1
+```
+
+按需安装依赖：
+
+```powershell
+omc install base          # gh、git、aria2、7z、uv（必装）
+omc install jq            # statusline JSON 解析需要
+omc install node          # TypeScript LSP 前置
+omc install tslsp         # TypeScript LSP（需要先装 node）
+omc install rust          # Rust LSP（安装 rust + rust-analyzer）
+omc install pwsh7         # PowerShell 7 本体（pwsh7 插件需要）
+omc install pses          # PowerShellEditorServices（psh5/pwsh7 需要）
+```
+
+> **nushell 插件是为 AI agent 原生工具链定制的打包版**（捆绑 nu 二进制 + 6 个插件），内置在插件中避免版本冲突。如果需要系统级开发使用 Nushell，可通过 omc 单独安装：`omc install nushell`。两者独立互不影响。
+
+各插件的 omc 依赖：
+
+| 插件 | 依赖工具 | omc 安装命令 |
+|------|----------|-------------|
+| **nushell** | 无（自包含，agent 定制版） | `omc install nushell`（系统开发用） |
+| **dev-fix** | Git Bash | `omc install base` |
+| **statusline** | bash + jq + git | `omc install base` → `omc install jq` |
+| **typescript** | node + tslsp | `omc install node` → `omc install tslsp` |
+| **rust** | rust | `omc install rust` |
+| **python** | uv（base 含） | `omc install base` |
+| **psh5** | pses | `omc install pses` |
+| **pwsh7** | pwsh7 + pses | `omc install pwsh7` → `omc install pses` |
+
+### 2. 安装插件
+
+```text
+/plugin marketplace add https://github.com/raystyle/claude-plugins
+/plugin install raystyle@nushell
+/plugin install raystyle@dev-fix
+/plugin install raystyle@statusline
+```
 
 ## Nushell 插件详解
 
@@ -47,7 +86,7 @@ Skills 已拆分到独立仓库：**[raystyle/skills](https://github.com/raystyl
 | 插件 | 命令数 | 功能 |
 |------|--------|------|
 | **polars** | 146 | DataFrame / 数据分析引擎（`from parquet`/`csv`/`json`、`polars filter`/`group-by`/`join`） |
-| **browse** | 8 | 浏览器自动化（[nu-browse](https://github.com/raystyle/nu_browse_bin)，定制插件）— 为智能体适配的浏览器控制。[查看完整文档 →](https://github.com/raystyle/nu_browse_bin) |
+| **browse** | 8 | 浏览器自动化（[nu-browse](https://github.com/raystyle/nu_browse_bin)）— 为智能体适配的浏览器控制 |
 | **formats** | 6 | 额外文件格式解析（`from eml`/`ics`/`ini`/`plist`/`vcf`） |
 | **query** | 5 | 结构化数据查询（`query json`/`xml`/`web`） |
 | **gstat** | 1 | Git 仓库状态（`gstat`） |
@@ -68,30 +107,12 @@ plugins/nushell/
     plugin.msgpackz             # 插件注册表（首次启动自动生成）
 ```
 
-## 安装
-
-```text
-# 添加市场源（使用 HTTPS URL）
-/plugin marketplace add https://github.com/raystyle/claude-plugins
-
-# 安装插件
-/plugin install raystyle@nushell
-/plugin install raystyle@dev-fix
-/plugin install raystyle@statusline
-```
-
-## 前置条件
-
-编程和 CLI 环境使用 [oh-my-winclaude](https://github.com/raystyle/oh-my-winclaude)（Git、Node.js、Python、Rust 等工具链一键安装）。
-
-> **注意：nushell 插件是完全自包含的**，捆绑了自己的 `nu.exe` 和所有插件二进制，**不要通过 oh-my-winclaude 再安装 Nushell**，避免版本冲突。
-
 ## 联动项目
 
-- **[oh-my-winclaude](https://github.com/raystyle/oh-my-winclaude)** — Claude Code 基础环境（前置依赖），持续更新中
-- **[skills](https://github.com/raystyle/skills)** — Skill 插件市场，持续更新中
-- **[nushell-evo](https://github.com/raystyle/nushell-evo-bin)** — Nushell fork，开启完整的 MCP 命令日志
-- **[nu-browse](https://github.com/raystyle/nu_browse_bin)** — 为智能体和 Nushell 适配定制的浏览器插件
+- [oh-my-winclaude](https://github.com/raystyle/oh-my-winclaude) — 基础环境（Git、Node.js、Python、Rust 等工具链一键安装）
+- [skills](https://github.com/raystyle/skills) — Skill 集合（浏览器自动化、GitHub 搜索、AI 对话等）
+- [nushell-evo](https://github.com/raystyle/nushell-evo-bin) — Nushell fork，完整的 MCP 命令审计日志
+- [nu-browse](https://github.com/raystyle/nu_browse_bin) — 为智能体适配的浏览器 Nushell 插件
 
 ## 许可证
 
