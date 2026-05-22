@@ -16,8 +16,8 @@
         "name": "RAY",
         "url": "https://github.com/raystyle"
       },
-      "homepage": "https://github.com/raystyle/plugins",
-      "repository": "https://github.com/raystyle/plugins",
+      "homepage": "https://github.com/raystyle/claude-plugins",
+      "repository": "https://github.com/raystyle/claude-plugins",
       "license": "MIT",
       "source": "./plugins/dev-fix",
       "category": "hook"
@@ -30,8 +30,8 @@
         "name": "RAY",
         "url": "https://github.com/raystyle"
       },
-      "homepage": "https://github.com/raystyle/plugins",
-      "repository": "https://github.com/raystyle/plugins",
+      "homepage": "https://github.com/raystyle/claude-plugins",
+      "repository": "https://github.com/raystyle/claude-plugins",
       "license": "MIT",
       "source": "./plugins/typescript",
       "category": "lsp"
@@ -44,8 +44,8 @@
         "name": "RAY",
         "url": "https://github.com/raystyle"
       },
-      "homepage": "https://github.com/raystyle/plugins",
-      "repository": "https://github.com/raystyle/plugins",
+      "homepage": "https://github.com/raystyle/claude-plugins",
+      "repository": "https://github.com/raystyle/claude-plugins",
       "license": "MIT",
       "source": "./plugins/rust",
       "category": "lsp"
@@ -58,8 +58,8 @@
         "name": "RAY",
         "url": "https://github.com/raystyle"
       },
-      "homepage": "https://github.com/raystyle/plugins",
-      "repository": "https://github.com/raystyle/plugins",
+      "homepage": "https://github.com/raystyle/claude-plugins",
+      "repository": "https://github.com/raystyle/claude-plugins",
       "license": "MIT",
       "source": "./plugins/python",
       "category": "lsp"
@@ -72,8 +72,8 @@
         "name": "RAY",
         "url": "https://github.com/raystyle"
       },
-      "homepage": "https://github.com/raystyle/plugins",
-      "repository": "https://github.com/raystyle/plugins",
+      "homepage": "https://github.com/raystyle/claude-plugins",
+      "repository": "https://github.com/raystyle/claude-plugins",
       "license": "MIT",
       "source": "./plugins/psh5",
       "category": "lsp"
@@ -86,8 +86,8 @@
         "name": "RAY",
         "url": "https://github.com/raystyle"
       },
-      "homepage": "https://github.com/raystyle/plugins",
-      "repository": "https://github.com/raystyle/plugins",
+      "homepage": "https://github.com/raystyle/claude-plugins",
+      "repository": "https://github.com/raystyle/claude-plugins",
       "license": "MIT",
       "source": "./plugins/pwsh7",
       "category": "lsp"
@@ -100,8 +100,8 @@
         "name": "RAY",
         "url": "https://github.com/raystyle"
       },
-      "homepage": "https://github.com/raystyle/plugins",
-      "repository": "https://github.com/raystyle/plugins",
+      "homepage": "https://github.com/raystyle/claude-plugins",
+      "repository": "https://github.com/raystyle/claude-plugins",
       "license": "MIT",
       "source": "./plugins/statusline",
       "category": "hook"
@@ -115,7 +115,7 @@
         "url": "https://github.com/raystyle"
       },
       "homepage": "https://github.com/raystyle/claude-plugins",
-      "repository": "https://github.com/raystyle/nushell-evo",
+      "repository": "https://github.com/raystyle/claude-plugins",
       "license": "MIT",
       "source": "./plugins/nushell",
       "category": "mcp"

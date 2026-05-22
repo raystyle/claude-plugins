@@ -71,9 +71,13 @@ plugins/nushell/
 ## 安装
 
 ```text
-/plugin marketplace add raystyle/plugins
+# 添加市场源（使用 HTTPS URL）
+/plugin marketplace add https://github.com/raystyle/claude-plugins
+
+# 安装插件
 /plugin install raystyle@nushell
 /plugin install raystyle@dev-fix
+/plugin install raystyle@statusline
 ```
 
 ## 前置条件
