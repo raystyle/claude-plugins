@@ -6,7 +6,7 @@ Claude Code 插件集合。MCP servers、LSP configs、Hooks — 专为 Windows 
 
 | 插件 | 类型 | 说明 |
 |------|------|------|
-| [dev-fix](plugins/dev-fix) | Hook | Windows Git Bash 编码/换行修复 + Python venv 自动激活 + 自动 git add |
+| [dev-fix](plugins/dev-fix) | Hook | Windows Git Bash 编码/换行修复 + MSYS 路径保护 + 条件式 venv 激活 + 自动 git add |
 | [statusline](plugins/statusline) | Hook | 四行状态栏：模型 + Context(token/进度条/百分比) + MCP/LSP 服务 + Git 分支状态 |
 | [typescript](plugins/typescript) | LSP | typescript-language-server（.ts/.tsx/.js/.jsx/.mts/.cts/.mjs/.cjs） |
 | [rust](plugins/rust) | LSP | rust-analyzer |

@@ -15,7 +15,7 @@ MCP servers、LSP configs、Hooks — 不含 Skills（已拆分到 [skills](http
 .claude-plugin/
   marketplace.json             # Marketplace 注册（8 个插件：1 MCP + 5 LSP + 2 Hook）
 plugins/
-  dev-fix/                     # Hook：编码/换行修复 + Python venv + 自动 git add
+  dev-fix/                     # Hook：编码/换行修复 + MSYS路径保护 + 条件式 venv + 自动 git add
   statusline/                  # Hook：四行状态栏（模型/Context/MCP/LSP/Git）
   typescript/                  # LSP：typescript-language-server
   rust/                        # LSP：rust-analyzer

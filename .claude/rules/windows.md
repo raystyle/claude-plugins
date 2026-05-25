@@ -5,9 +5,12 @@
 ## dev-fix Hook（编码/换行修复）
 
 - `bash-fix.sh` 通过 `tr -d '\r'` 消除 Git Bash 的 CR 换行问题
-- 自动设置 UTF-8 编码环境（`PYTHONUTF8`、`PYTHONIOENCODING`、`LESSCHARSET`、`LANG`）
+- 自动设置 UTF-8 编码环境（`PYTHONUTF8`、`PYTHONIOENCODING`、`LESSCHARSET`、`LANG`、`LC_ALL`）
 - locale 使用 `C.UTF-8`（通用），不要硬编码特定语言
-- Python venv 检测优先查找 `Scripts/activate`（Windows），其次 `bin/activate`（Linux/Mac）
+- 设置 `MSYS_NO_PATHCONV=1` 和 `MSYS2_ARG_CONV_EXCL='*'` 防止 Git Bash 路径转换破坏命令参数
+- Python venv 仅在命令直接使用 python/pip/pytest 等工具时自动激活，uv/conda/pipx/poetry 命令跳过
+- venv 检测优先查找 `Scripts/activate`（Windows），其次 `bin/activate`（Linux/Mac）
+- `git-add.sh` 在 Write/Edit/MultiEdit 后自动 `git add`，跳过不存在文件和 vendor 目录（node_modules 等）
 
 ## PowerShell LSP 冲突
 
