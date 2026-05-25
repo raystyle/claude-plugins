@@ -63,6 +63,16 @@ omc install pses          # PowerShellEditorServices（psh5/pwsh7 需要）
 /plugin install raystyle@statusline
 ```
 
+### 3. 更新插件
+
+```bash
+# 先刷新 marketplace 缓存
+claude plugin marketplace update raystyle
+
+# 再更新单个插件
+claude plugin update dev-fix@raystyle
+```
+
 ## Nushell 插件详解
 
 自包含的 [Nushell](https://www.nushell.sh/) 完整打包版，基于 [nushell-evo](https://github.com/raystyle/nushell-evo-bin)（0.112.3），捆绑 nu 二进制和 6 个插件。通过 `XDG_CONFIG_HOME` 驱动配置发现，首次启动自动注册所有插件，无需额外配置。
