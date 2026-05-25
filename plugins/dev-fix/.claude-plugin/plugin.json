@@ -1,6 +1,6 @@
 {
   "name": "dev-fix",
-  "description": "开发辅助 Hook：修复 Windows Git Bash 编码/换行 + Python venv 激活 + 写完文件自动 git add",
+  "description": "开发辅助 Hook：修复 Windows Git Bash 编码/换行 + MSYS 路径保护 + 条件式 Python venv 激活 + 写完文件自动 git add",
   "version": "1.0.0",
   "author": {
     "name": "RAY",
