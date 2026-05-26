@@ -11,7 +11,7 @@
     {
       "name": "dev-fix",
       "description": "开发辅助 Hook：修复 Windows Git Bash 编码/换行 + MSYS 路径保护 + 条件式 Python venv 激活 + 写完文件自动 git add + 反斜杠路径检测",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
@@ -25,7 +25,7 @@
     {
       "name": "typescript",
       "description": "TS/JS LSP (typescript-language-server)",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
@@ -39,7 +39,7 @@
     {
       "name": "rust",
       "description": "Rust LSP (rust-analyzer)",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
@@ -53,7 +53,7 @@
     {
       "name": "python",
       "description": "Python LSP (ty type checker)",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
@@ -67,7 +67,7 @@
     {
       "name": "psh5",
       "description": "Windows PowerShell 5.x LSP (PowerShellEditorServices)",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
@@ -81,7 +81,7 @@
     {
       "name": "pwsh7",
       "description": "PowerShell 7 LSP (PowerShellEditorServices)",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
@@ -95,7 +95,7 @@
     {
       "name": "statusline",
       "description": "StatusLine Hook：自动注入 Claude Code 状态栏，显示模型、Context 用量、费用、Git 状态、Rate limit",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
@@ -109,7 +109,7 @@
     {
       "name": "nushell",
       "description": "Nushell 完整打包版（含 polars 等插件）— MCP server + LSP",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
