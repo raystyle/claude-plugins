@@ -58,19 +58,21 @@ omc install pses          # PowerShellEditorServices（psh5/pwsh7 需要）
 
 ```bash
 claude plugin marketplace add https://github.com/raystyle/claude-plugins
-claude plugin install raystyle@nushell
-claude plugin install raystyle@dev-fix
-claude plugin install raystyle@statusline
+
+# 安装全部插件
+claude plugin install raystyle@nushell && claude plugin install raystyle@dev-fix && claude plugin install raystyle@statusline && claude plugin install raystyle@typescript && claude plugin install raystyle@rust && claude plugin install raystyle@python && claude plugin install raystyle@pwsh7
 ```
+
+> **注意**：psh5 和 pwsh7 映射相同的扩展名，同时安装会冲突。推荐安装 pwsh7（PowerShell 7，性能更好）。如需 psh5，将上面的 `pwsh7` 替换为 `psh5`。
 
 ### 3. 更新插件
 
 ```bash
-# 先刷新 marketplace 缓存
+# 刷新 marketplace 缓存
 claude plugin marketplace update raystyle
 
-# 再更新插件
-claude plugin update dev-fix@raystyle
+# 更新全部插件
+claude plugin update nushell@raystyle && claude plugin update dev-fix@raystyle && claude plugin update statusline@raystyle && claude plugin update typescript@raystyle && claude plugin update rust@raystyle && claude plugin update python@raystyle && claude plugin update pwsh7@raystyle
 ```
 
 ## Nushell 插件详解
