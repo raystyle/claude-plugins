@@ -13,6 +13,7 @@ paths:
 ## Schema 和清单
 
 - **Schema 是权威来源** — `utils/plugins/schemas.ts` 中的 Zod schema 定义所有合法字段和验证规则，开发时以此为准
+- **版本号双写** — 改版本号时必须同时更新 `marketplace.json` 和每个插件的 `plugins/*/. claude-plugin/plugin.json`，缺一不可。`claude plugin update` 比对的是各插件自己的 plugin.json 版本，不是 marketplace.json
 - **JSON 引号转义** — `plugin.json` 是标准 JSON，`args` 中脚本内的双引号必须转义为 `\"` 或改用单引号。修改后务必用 JSON 验证器检查
 - **路径变量** — `${CLAUDE_PLUGIN_ROOT}` 和 `${CLAUDE_PLUGIN_DATA}` 在所有配置中可用，替换发生在加载时
 - **路径必须相对** — 所有路径以 `./` 开头，相对于 plugin 根目录。安装后 plugin 被复制到缓存，绝对路径和 `../` 会失效

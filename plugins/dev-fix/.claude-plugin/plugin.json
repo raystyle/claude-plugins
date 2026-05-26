@@ -39,7 +39,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/path-fix-hint.sh",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/scripts/error-fix-hint.sh",
             "timeout": 10
           }
         ]
