@@ -1,7 +1,7 @@
 {
   "name": "psh5",
   "description": "Windows PowerShell 5.x LSP (PowerShellEditorServices)",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": {
     "name": "RAY",
     "url": "https://github.com/raystyle"
