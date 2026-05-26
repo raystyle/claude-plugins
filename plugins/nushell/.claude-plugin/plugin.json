@@ -1,7 +1,7 @@
 {
   "name": "nushell",
   "displayName": "Nushell MCP",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Nushell 完整打包版（含 polars 等插件）",
   "author": {
     "name": "RAY",
