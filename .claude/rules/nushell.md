@@ -18,6 +18,7 @@ paths:
 - **`plugin use` 在 config.nu 中的限制** — 作为 parser keyword，`plugin use` 在 config.nu 解析阶段执行，此时 `plugin add` 的运行时代码尚未执行。如果注册表中没有对应条目（未预先 `add` 过），会报 "Plugin registry file can't be opened"。`try {}` 无法捕获 parser 阶段错误
 - **当前方案**：`env.nu`（先执行）中做 `plugin add` 注册插件生成 registry → `config.nu`（后执行）中做 `plugin use` 激活插件。`plugin add` 必须在 `env.nu` 中，否则 `config.nu` 的 `plugin use` 找不到 registry 会中断整个 `config.nu` 加载
 - **注册流程**：`env.nu` 设置 `PATH`/`NU_PLUGIN_DIRS` + `plugin add` 注册所有 `nu_plugin_*` 二进制 → `config.nu` 中 `plugin use` 激活插件
+- **`NU_MCP_HISTORY_LIMIT`** — 在 `env.nu` 中设置（默认 1000），控制 MCP `$history` 保留的最大条目数，防止长时间会话中历史记录无限增长
 - **nu 模块不属于 plugin** — `.nu` 模块（browse.nu、github.nu 等）和 JS SDK 已迁移到 [skills](https://github.com/raystyle/skills) 项目。Plugin 只负责启动 MCP server + LSP，不捆绑业务模块
 
 ## LSP Server 配置

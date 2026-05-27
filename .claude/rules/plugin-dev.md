@@ -63,5 +63,5 @@ Plugin 提供的 agents **不支持**以下字段（会被忽略并记录警告�
 ## 本地测试
 
 - **`--plugin-dir`** — CLI 参数 `claude --plugin-dir <path>` 加载本地插件目录，session-only 不影响全局安装，可重复指定多个目录：`claude --plugin-dir A --plugin-dir B`
-- **模拟 statusline 脚本** — 用 echo 构造 JSON 通过管道传给脚本测试输出效果：`echo '{"model":{"display_name":"Opus"},...}' | bash scripts/statusline.sh`
+- **模拟 statusline 脚本** — 用 echo 构造 JSON 通过管道传给脚本测试输出效果：`echo '{"model":{"display_name":"Opus"},...}' | bash scripts/statusline.sh`。脚本同时读取 `$cwd/.claude/scheduled_tasks.json` 显示 Cron 定时任务行
 - **开发完成提示测试** — 每次完成插件开发或修改后，在回复末尾附上对应的 `--plugin-dir` 测试命令，方便用户直接复制粘贴验证

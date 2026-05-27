@@ -186,3 +186,32 @@ fi
 if [ -n "$line4" ]; then
   echo -e "$line4"
 fi
+
+# ── Line 5: Cron (scheduled tasks) ──
+cron_file="$cwd/.claude/scheduled_tasks.json"
+if [ -n "$cwd" ] && [ -f "$cron_file" ]; then
+  cron_count=$(jq '.tasks | length' "$cron_file" 2>/dev/null || echo "0")
+  if [ "$cron_count" -gt 0 ] 2>/dev/null; then
+    cron_parts=""
+    for i in $(seq 0 $((cron_count - 1))); do
+      c_cron=$(jq -r ".tasks[$i].cron // \"?\"" "$cron_file" 2>/dev/null || echo "?")
+      c_prompt=$(jq -r ".tasks[$i].prompt // \"\"" "$cron_file" 2>/dev/null | cut -c1-30 2>/dev/null || echo "")
+      c_recur=$(jq -r ".tasks[$i].recurring // false" "$cron_file" 2>/dev/null || echo "false")
+      if [ "$c_recur" = "true" ]; then
+        c_tag="↻"
+      else
+        c_tag="①"
+      fi
+      part="${C_MCP}${c_tag} ${c_cron}${R}"
+      if [ -n "$c_prompt" ]; then
+        part="${part} ${C_TIME}\"${c_prompt}\"${R}"
+      fi
+      if [ -n "$cron_parts" ]; then
+        cron_parts="${cron_parts}${C_KEY} · ${R}${part}"
+      else
+        cron_parts="$part"
+      fi
+    done
+    echo -e "${C_KEY}Cron:${R} ${C_CTX}${cron_count}${R} ${cron_parts}"
+  fi
+fi

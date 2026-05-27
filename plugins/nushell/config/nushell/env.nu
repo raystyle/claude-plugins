@@ -18,6 +18,8 @@ let path_list = if ($env.PATH | describe) =~ 'string' {
 $env.NU_PLUGIN_DIRS = ($env.NU_PLUGIN_DIRS? | default [] | append $bin)
 $env.PATH = ($path_list | append $bin)
 
+$env.NU_MCP_HISTORY_LIMIT = 1000
+
 # Skills 模块路径 — 让 use skills/xxx 在 MCP evaluate 中可解析
 # Claude Code skills 安装在 ~/.claude/skills/ (getClaudeConfigHomeDir + '/skills')
 # NU_LIB_DIRS 搜索规则：use skills/xxx → 在每个条目下找 skills/xxx

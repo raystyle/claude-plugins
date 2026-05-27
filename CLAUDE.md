@@ -16,7 +16,7 @@ MCP servers、LSP configs、Hooks — 不含 Skills（已拆分到 [skills](http
   marketplace.json             # Marketplace 注册（8 个插件：1 MCP + 5 LSP + 2 Hook）
 plugins/
   dev-fix/                     # Hook：编码/换行修复 + MSYS路径保护 + 条件式 venv + 自动 git add
-  statusline/                  # Hook：四行状态栏（模型/Context/MCP/LSP/Git）
+  statusline/                  # Hook：五行状态栏（模型/Context/MCP/LSP/Git/Cron）
   typescript/                  # LSP：typescript-language-server
   rust/                        # LSP：rust-analyzer
   python/                      # LSP：ty type checker
@@ -35,7 +35,7 @@ plugins/
 
 ### nushell-evo — AI 自进化日志
 
-nushell-evo 是 Nushell 的 fork，记录 AI 通过 MCP 执行的每条命令（命令、目录、成功/失败、错误详情），生成 JSONL 审计日志。**自动记录，无需配置**，默认写入工作目录下的 `nu_evo.jsonl`。可通过 `NU_MCP_LOG` 环境变量自定义路径。用于分析 AI 错误模式、训练模型进化、调试 MCP 会话。
+nushell-evo 是 Nushell 的 fork，记录 AI 通过 MCP 执行的每条命令（命令、目录、成功/失败、错误详情），生成 JSONL 审计日志。**自动记录，无需配置**，默认写入工作目录下的 `nu_evo.jsonl`。可通过 `NU_MCP_LOG` 环境变量自定义路径。MCP 历史记录条数上限通过 `NU_MCP_HISTORY_LIMIT` 设置（默认 1000）。用于分析 AI 错误模式、训练模型进化、调试 MCP 会话。
 
 ### MCP Server（3 个工具）
 
@@ -85,19 +85,21 @@ config/nushell/
 
 ## Statusline 插件
 
-四行彩色状态栏，自动注入到 Claude Code 界面底部：
+五行彩色状态栏，自动注入到 Claude Code 界面底部：
 
 ```text
 Model: glm-5.1  │  Ctx: ▓▓▓▓░░░░░░ 112K/200K 56%  │  Time: 44m50s
 MCP: 4_5v_mcp · plugin_nushell_nu · web_reader
 LSP: nushell · pwsh7 · python · rust · typescript
 Branch: main  │  Staged: 5  │  Modified: 2  │  Dir: D:/opensource/Plugins
+Cron: 2 ↻ */5 * * * * "check the deploy" · ① 30 14 27 5 * "remind me at 2:30pm"
 ```
 
 - **Line 1** — 模型名、Context 用量（进度条 + token 数 + 百分比）、会话时长。Context ≥80% 变红警告
 - **Line 2** — MCP 服务列表（SessionStart 从配置发现，PostToolUse 自动累积）
 - **Line 3** — LSP 服务列表（从已安装插件检测）
 - **Line 4** — Git 分支/状态、工作目录
+- **Line 5** — Cron 定时任务（从 `.claude/scheduled_tasks.json` 读取）。`↻` 循环任务，`①` 一次性任务，显示 cron 表达式和任务摘要
 
 ## 注意事项
 
