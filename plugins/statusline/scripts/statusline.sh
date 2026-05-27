@@ -196,7 +196,7 @@ if [ -n "$cwd" ] && [ -f "$cron_file" ]; then
     cron_parts=""
     for i in $(seq 0 $((cron_count - 1))); do
       c_cron=$(jq -r ".tasks[$i].cron // \"?\"" "$cron_file" 2>/dev/null || echo "?")
-      c_prompt=$(jq -r ".tasks[$i].prompt // \"\"" "$cron_file" 2>/dev/null | cut -c1-30 2>/dev/null || echo "")
+      c_prompt=$(jq -r ".tasks[$i].prompt // \"\"" "$cron_file" 2>/dev/null | tr '\n\r' '  ' | awk '{if(length>30) print substr($0,1,27)"..."; else print}' 2>/dev/null || echo "")
       c_recur=$(jq -r ".tasks[$i].recurring // false" "$cron_file" 2>/dev/null || echo "false")
       if [ "$c_recur" = "true" ]; then
         c_tag="↻"
