@@ -11,6 +11,10 @@
 - Python venv 仅在命令直接使用 python/pip/pytest 等工具时自动激活，uv/conda/pipx/poetry 命令跳过
 - venv 检测优先查找 `Scripts/activate`（Windows），其次 `bin/activate`（Linux/Mac）
 - `git-add.sh` 在 Write/Edit/MultiEdit 后自动 `git add`，跳过不存在文件和 vendor 目录（node_modules 等）
+- `error-fix-hint.sh`（PostToolUseFailure）检测两类常见 Bash 命令失败原因，通过 `additionalContext` 注入修正提示：
+  - **Windows 反斜杠路径** — 用 jq `test("[A-Za-z]:\\\\")` 检测驱动器路径，提示改为正斜杠
+  - **PowerShell cmdlet 误用** — 用 jq `test("Get-ChildItem|Set-Content|...")` 检测 PS 语法，提示改用 Unix 工具或 PowerShell tool
+  - 检测用 jq 正则而非 bash `[[ =~ ]]`，避免 bash 转义反斜杠的陷阱
 
 ## PowerShell LSP 冲突
 

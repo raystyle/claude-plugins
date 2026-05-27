@@ -1,7 +1,7 @@
 {
   "name": "dev-fix",
   "description": "开发辅助 Hook：修复 Windows Git Bash 编码/换行 + MSYS 路径保护 + 条件式 Python venv 激活 + 写完文件自动 git add",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "author": {
     "name": "RAY",
     "url": "https://github.com/raystyle"
