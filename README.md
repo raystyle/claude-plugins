@@ -61,7 +61,7 @@ claude plugin marketplace add https://github.com/raystyle/claude-plugins
 
 # 安装全部插件
 $plugins = @('nushell','dev-fix','statusline','typescript','rust','python','pwsh7')
-foreach ($p in $plugins) { claude plugin install "raystyle@$p" }
+foreach ($p in $plugins) { claude plugin install $p }
 ```
 
 > **注意**：psh5 和 pwsh7 映射相同的扩展名，同时安装会冲突。推荐安装 pwsh7（PowerShell 7，性能更好）。如需 psh5，将上面的 `pwsh7` 替换为 `psh5`。

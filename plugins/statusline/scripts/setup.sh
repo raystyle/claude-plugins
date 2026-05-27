@@ -19,14 +19,12 @@ else
   content="{}"
 fi
 
-# Build command — on Windows use full bash.exe + Windows paths
-if [[ "$(uname -s)" == MINGW* || "$(uname -s)" == MSYS* || "$(uname -s)" == CYGWIN* ]]; then
-  bash_exe=$(cygpath -w "$(which bash)")
-  script_win=$(cygpath -w "$script_path")
-  cmd="$bash_exe $script_win"
-else
-  cmd="bash $script_path"
-fi
+# Build command — always use POSIX paths.
+# execCommandHook runs the command string through Git Bash (spawn with shell=gitBashPath),
+# so Windows backslash paths (C:\Users\...) break — backslashes become escape chars.
+# The .sh extension triggers auto-prepend of 'bash' in execCommandHook (line 862).
+# On non-Windows, 'bash script.sh' works directly.
+cmd="bash $script_path"
 
 # Check if command already matches — skip write if unchanged
 current_cmd=$(echo "$content" | jq -r '.statusLine.command // ""' 2>/dev/null || echo "")

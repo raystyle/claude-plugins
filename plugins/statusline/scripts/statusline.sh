@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# StatusLine — four-line display
+# StatusLine — five-line display
 # L1: Model:glm-5.1  │  Ctx:▓▓▓▓░░░░░░ 80K/200K 40%  │  Time:15m14s
 # L2: MCP:nushell,web_reader
 # L3: LSP:nushell,typescript,rust,python
 # L4: Git:main staged:5 modified:2 untracked:1  │  Dir:D:/opensource/Plugins
+# L5: Cron tasks
 set -euo pipefail
 
 input=$(cat | tr -d '\r')
