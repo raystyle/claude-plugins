@@ -38,6 +38,10 @@ paths:
 - **Hook 类型**：`command`（shell 命令）、`http`（POST 请求）、`mcp_tool`（MCP 工具调用）、`prompt`（LLM 评估）、`agent`（agentic 验证器）
 - **command hook** — 脚本必须可执行（`chmod +x`），必须有 shebang 行，路径必须用 `${CLAUDE_PLUGIN_ROOT}`
 - **Setup vs SessionStart** — `Setup` hook 只在 `claude --init` 模式下触发，正常交互会话不触发。需要会话启动时执行的逻辑应使用 `SessionStart`
+- **Hook 执行环境** — Windows 上 command hook 通过 `spawn(cmd, [], { shell: gitBashPath })` 执行，command 字符串被传给 Git Bash 解析。**禁止在 command 中使用 Windows 反斜杠路径**（`C:\Users\...`），Git Bash 会把 `\` 当转义字符导致路径解析失败（exit 127）。始终用 POSIX 路径（`/c/Users/...`）或相对路径
+- **.sh 自动 prepend** — Windows 上 execCommandHook 检测 `.sh` 后缀的 command 会自动 prepend `bash`，所以 command 只需写 `bash script.sh` 或 `script.sh`，无需写完整 bash.exe 路径
+- **statusLine 绕过 PluginSettings** — `statusLine` 字段不在 `PluginSettingsSchema` 白名单内，需通过 SessionStart hook 脚本（如 setup.sh）写入用户的 `~/.claude/settings.json`
+- **statusLine 需要 workspace trust** — 交互模式下 statusLine 命令执行前会检查 workspace trust，未 trust 时静默跳过，debug 日志显示 `Skipping StatusLine command execution - workspace trust not accepted`
 
 ## Plugin Agent 安全限制
 
@@ -57,7 +61,7 @@ Plugin 提供的 agents **不支持**以下字段（会被忽略并记录警告�
 ## Plugin Settings 限制
 
 - **PluginSettingsSchema 白名单** — `pluginLoader.ts` 中 `PluginSettingsSchema` 使用 `SettingsSchema().pick({ agent: true }).strip()` 过滤，plugin 的 `settings.json` 只有 `agent` 字段生效，其他字段（如 `statusLine`、`subagentStatusLine`）会被 `.strip()` 静默移除
-- **绕过方法** — 通过 Hook（如 `Setup`）在会话启动时将配置写入用户的 `~/.claude/settings.json`
+- **绕过方法** — 通过 SessionStart hook 在会话启动时将配置写入用户的 `~/.claude/settings.json`（见 Hook 部分的 statusLine 说明）
 - **优先级** — Plugin settings 优先级最低，所有文件来源（user/project/local）都会覆盖
 
 ## 本地测试

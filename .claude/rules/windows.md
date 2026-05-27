@@ -31,3 +31,14 @@
 - plugin.json 中使用 `${CLAUDE_PLUGIN_ROOT}` 引用插件目录，不要硬编码路径
 - Bash hook 脚本中使用 `$CLAUDE_PROJECT_DIR` 而非硬编码项目路径
 - 文件路径用正斜杠 `/`（Git Bash 兼容），避免反斜杠 `\`
+- **Hook command 路径必须用 POSIX 格式** — `execCommandHook` 在 Windows 上用 Git Bash 作为 shell 执行 command 字符串，反斜杠路径（如 `D:\path\script.sh`）会被 Git Bash 当作转义字符解析导致 exit 127。写入 settings.json 的 statusLine command 必须用 POSIX 路径（`/c/Users/...`）或不含反斜杠的格式（`bash $plugin_root/scripts/statusline.sh`）。不要用 `cygpath -w`
+- **Hook 执行环境 ≠ Bash tool** — Hook command 由 Claude Code 直接 `spawn`，不经过 dev-fix hook 的 PATH 注入。脚本依赖的外部工具（jq、git 等）必须确保在 Git Bash 默认 PATH 中可找到，或脚本自行设置 PATH
+
+## CLI 插件管理命令
+
+- **install** — `claude plugin install <plugin-name>`（自动从已配置的 marketplace 发现，无需 marketplace 前缀）
+- **update** — `claude plugin update "<plugin-name>@<marketplace-name>"`（需要 `@marketplace` 后缀指定来源）
+- **uninstall** — `claude plugin uninstall "<plugin-name>@<marketplace-name>"`
+- **list** — `claude plugin list`
+- **marketplace add** — `claude plugin marketplace add <git-url>`
+- **marketplace update** — `claude plugin marketplace update <marketplace-name>`
