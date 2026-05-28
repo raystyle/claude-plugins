@@ -109,7 +109,7 @@
     {
       "name": "nushell",
       "description": "Nushell 完整打包版（含 polars 等插件）— MCP server + LSP",
-      "version": "2.1.0",
+      "version": "2.1.1",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
