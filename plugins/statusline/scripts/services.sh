@@ -83,13 +83,16 @@ if [ -n "$enabled_names" ]; then
   done)
 
   # Merge plugin MCP into all_servers
-  plugin_mcp=$(echo "$plugin_services" | grep '^mcp:' | sed 's/^mcp://' | sort -u | sed '/^$/d')
+  # grep returns 1 on no-match; under `set -e -o pipefail` that aborts the
+  # script when no enabled plugin exposes MCP. Guard with `|| true`.
+  plugin_mcp=$(echo "$plugin_services" | grep '^mcp:' | sed 's/^mcp://' | sort -u | sed '/^$/d' || true)
   if [ -n "$plugin_mcp" ]; then
     all_servers=$(printf '%s\n%s' "$all_servers" "$plugin_mcp" | sed '/^$/d' | sort -u)
   fi
 
   # Extract plugin LSP
-  lsp_names=$(echo "$plugin_services" | grep '^lsp:' | sed 's/^lsp://' | sort -u | sed '/^$/d')
+  # Same no-match guard as plugin_mcp above.
+  lsp_names=$(echo "$plugin_services" | grep '^lsp:' | sed 's/^lsp://' | sort -u | sed '/^$/d' || true)
   if [ -n "$lsp_names" ]; then
     lsp_display=$(echo "$lsp_names" | tr '\n' ' ' | sed 's/ *$//' | sed 's/  */ · /g')
   fi

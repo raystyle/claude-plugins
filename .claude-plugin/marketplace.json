@@ -95,7 +95,7 @@
     {
       "name": "statusline",
       "description": "StatusLine Hook：自动注入 Claude Code 状态栏，显示模型、Context 用量、费用、Git 状态、Rate limit",
-      "version": "2.1.2",
+      "version": "2.1.3",
       "author": {
         "name": "RAY",
         "url": "https://github.com/raystyle"
